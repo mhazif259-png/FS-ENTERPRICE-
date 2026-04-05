@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS ENTERPRISE - Professional Multi Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f0f23);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header */
+        .header {
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: 6rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #ff6b6b);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite, glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+            text-shadow: 0 0 60px rgba(255,107,107,0.8);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #ff6b6b); }
+            to { filter: drop-shadow(0 0 40px #4ecdc4); }
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 80px;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 25px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: cardSlide 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes cardSlide {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            border-color: #4ecdc4;
+            box-shadow: 0 35px 70px rgba(78,205,196,0.4);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.8s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: block;
+            animation: iconBounce 2s infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .service-features {
+            list-style: none;
+            line-height: 1.8;
+        }
+
+        .service-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            animation: listFade 0.5s ease-out forwards;
+        }
+
+        .service-features li:nth-child(1) { animation-delay: 0.1s; }
+        .service-features li:nth-child(2) { animation-delay: 0.2s; }
+        .service-features li:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes listFade {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 0.9; transform: translateX(0); }
+        }
+
+        .service-features li:hover {
+            opacity: 1;
+            transform: translateX(8px);
+            color: #4ecdc4;
+        }
+
+        .service-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .highlight {
+            color: #ff6b6b !important;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 60px;
+            max-width: 700px;
+            margin: 80px auto;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .phone-btn {
+            padding: 22px 35px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 20px 40px rgba(78,205,196,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            animation: phonePulse 2s infinite;
+        }
+
+        @keyframes phonePulse {
+            0% { box-shadow: 0 20px 40px rgba(78,205,196,0.3); }
+            50% { box-shadow: 0 20px 40px rgba(78,205,196,0.5); }
+            100% { box-shadow: 0 20px 40px rgba(78,205,196,0.3); }
+        }
+
+        .phone-btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(78,205,196,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .service-grid { grid-template-columns: 1fr; }
+            .phone-grid { grid-template-columns: 1fr; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">FS ENTERPRISE</h1>
+        <p class="tagline">Your Professional One-Stop Solution Center</p>
+    </header>
+
+    <!-- Services -->
+    <section class="services">
+        <h2 class="section-title">Premium Services</h2>
+        
+        <div class="service-grid">
+            <!-- Xerox & Printing -->
+            <div class="service-card">
+                <i class="fas fa-print service-icon" style="color: #ff6b6b;"></i>
+                <h3 class="service-title">🖨️ Professional Printing</h3>
+                <ul class="service-features">
+                    <li><span class="highlight">Color Printing</span> - A4, A3, A5 High Quality</li>
+                    <li><span class="highlight">Black & White</span> - Economy Fast Printing</li>
+                    <li>Photo Printing - 4R, 5R, 6R, Passport Size</li>
+                    <li>Brochure, Pamphlet, Visiting Cards</li>
+                    <li>Spiral Binding & Lamination</li>
+                    <li>Color & B/W Xerox Copies</li>
+                    <li>Scanning & PDF Services</li>
+                    <li>Express 5 Min Service Available</li>
+                </ul>
+            </div>
+
+            <!-- Passport Photos -->
+            <div class="service-card">
+                <i class="fas fa-camera service-icon" style="color: #4ecdc4;"></i>
+                <h3 class="service-title">📸 Passport Photos</h3>
+                <ul class="service-features">
+                    <li><span class="highlight">READY IN 10 MINS!</span></li>
+                    <li>Passport Size (35x45mm, 2x2 inch)</li>
+                    <li>Visa Photos (USA, UK, Canada, All Countries)</li>
+                    <li>ID Card Photos (Aadhar, PAN, Voter ID)</li>
+                    <li>Driving License Photos</li>
+                    <li>Matriculation & School Photos</li>
+                    <li>Studio Quality with Digital Copy</li>
+                    <li>Multiple Copies Available</li>
+                </ul>
+            </div>
+
+            <!-- Passport Service -->
+            <div class="service-card">
+                <i class="fas fa-passport service-icon" style="color: #45b7d1;"></i>
+                <h3 class="service-title">🛂 Passport Services</h3>
+                <ul class="service-features">
+                    <li>Tatkal & Normal Passport Application</li>
+                    <li>Passport Renewal & Re-issue</li>
+                    <li>Complete Document Preparation</li>
+                    <li>Online Form Filling Assistance</li>
+                    <li>Appointment Slot Booking</li>
+                    <li>Police Verification Help</li>
+                    <li>Document Checklist Provided</li>
+                    <li>Doorstep Document Pickup</li>
+                </ul>
+            </div>
+
+            <!-- Air Tickets -->
+            <div class="service-card">
+                <i class="fas fa-plane service-icon" style="color: #f9ca24;"></i>
+                <h3 class="service-title">✈️ Air Tickets</h3>
+                <ul class="service-features">
+                    <li>Domestic & International Flights</li>
+                    <li>Best Price Guarantee</li>
+                    <li>Instant E-Ticket Confirmation</li>
+                    <li>Group & Family Bookings</li>
+                    <li>Flight + Hotel Packages</li>
+                    <li>24x7 Customer Support</li>
+                    <li>Cancellation & Refund Help</li>
+                    <li>Web Check-in Service</li>
+                </ul>
+            </div>
+
+            <!-- Ice Creams -->
+            <div class="service-card">
+                <i class="fas fa-ice-cream service-icon" style="color: #ff9f43;"></i>
+                <h3 class="service-title">🍦 Premium Ice Creams</h3>
+                <ul class="service-features">
+                    <li><span class="highlight">ALL FLAVORS AVAILABLE!</span></li>
+                    <li>Vanilla Classic</li>
+                    <li>Chocolate Supreme</li>
+                    <li>Mango Fiesta</li>
+                    <li>Strawberry Delight</li>
+                    <li>Butterscotch Crunch</li>
+                    <li>Pista Almond</li>
+                    <li>Chocolate Chip Cookie</li>
+                    <li>Fruit Salad Special</li>
+                    <li>Cold & Fresh Always!</li>
+                </ul>
+            </div>
+
+            <!-- Cold Drinks -->
+            <div class="service-card">
+                <i class="fas fa-wine-bottle service-icon" style="color: #00d4ff;"></i>
+                <h3 class="service-title">🥤 Chilled Cold Drinks</h3>
+                <ul class="service-features">
+                    <li><span class="highlight">ALWAYS CHILLED!</span></li>
+                    <li>Coca Cola, Pepsi, Sprite</li>
+                    <li>Mountain Dew, 7UP Limca</li>
+                    <li>Fanta, Mirinda Orange</li>
+                    <li>Thums Up, Diet Coke</li>
+                    <li>Maaza, Slice Mango</li>
+                    <li>Real Fruit Juices</li>
+                    <li>Bisleri Mineral Water</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <h2><i class="fas fa-headset"></i> Call Now For Service!</h2>
+        <div class="phone-grid">
+            <a href="tel:7022005194" class="phone-btn">
+                <i class="fas fa-phone"></i>
+                7022005194
+            </a>
+            <a href="tel:9964602381" class="phone-btn">
+                <i class="fas fa-phone"></i>
+                9964602381
+            </a>
+        </div>
+        <p style="margin-top: 30px; font-size: 1.3rem; opacity: 0.9;">
+            Professional Service • Instant Delivery • 24/7 Open
+        </p>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.service-card, .contact').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.1;
+                card.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
